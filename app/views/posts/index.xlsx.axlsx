@@ -1,0 +1,14 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Posts") do |sheet|
+    sheet.add_row ['TITLE', 'DESCRIPTION', 'USER', 'CATEGORIES'], :sz => 16
+
+
+
+    @posts.each do |post|
+        # arr=[]
+        # post.categories.each do |cat|
+        #     arr << cat.name
+        # end
+      sheet.add_row [post.title, post.description, post.user.name, post.categories.map { |x| x[:name] }.join(", ")]
+    end
+end

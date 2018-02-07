@@ -1,0 +1,2 @@
+# class CategoryPostController < ApplicationController
+# end

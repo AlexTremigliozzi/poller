@@ -1,0 +1,15 @@
+<div class="card my-4">
+  <h5 style="margin-top:0px !important;" class="card-header">Leave a Comment:</h5>
+  <div class="card-body">
+    <%= form_for @comment do |f| %>
+      <%= f.hidden_field :commentable_id, value: @comment.commentable_id %>
+      <%= f.hidden_field :commentable_type, value: @comment.commentable_type %>
+      <form>
+        <div class="form-group">
+          <%= f.text_area :body, class: 'form-control' %>
+        </div>
+        <%= submit_tag "Commenta", class: 'btn btn-primary' %>
+      </form>
+    <% end %>
+  </div>
+</div>

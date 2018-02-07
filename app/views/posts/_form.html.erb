@@ -1,0 +1,62 @@
+
+<%= simple_form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, style: 'width:100%'%>
+      </div>
+      <div class="form-group">
+        <%= f.label :description %><br>
+        <%= f.text_area :description , style: 'width:100%', rows: 10, data: {behavior: "autocomplete"}%>
+
+        <script>
+
+        $(function(){
+            data = '/user_mention.json';
+            $('[data-behavior="autocomplete"]').atwho(
+              {
+                at:"@",
+                'data':data
+              }
+            );
+        });
+        </script>
+
+      </div>
+      <div class="form-group" style="width:100%;">
+        <%= f.input :category_ids, collection: Category.all,  as: :check_boxes  %>
+      </div>
+    </form>
+
+    <div class="form-group" style="display:none;">
+      <%= f.label :user_id %><br>
+      <%= f.text_field :user_id %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+  </div>
+
+
+<% end %>
+
+
+
+
+
+
