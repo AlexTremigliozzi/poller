@@ -13,6 +13,9 @@ class PollsController < ApplicationController
   def create
     @poll = Poll.new(poll_params)
     if @poll.save
+      (User.all.uniq - [current_user]).each do |user|
+        Notification.create(recipient: user, actor: current_user, action: "polled", notifiable: @poll)
+      end
       flash[:success] = 'Poll was created!'
       redirect_to polls_path
     else

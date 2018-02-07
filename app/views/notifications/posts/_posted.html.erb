@@ -1,6 +1,6 @@
 <li>
   <%= link_to post_path(notification.notifiable, anchor: dom_id(notification.notifiable)), class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
-    qualcuno ha fatto un post
+    <%= notification.actor.name %> ha fatto un post
     <!-- %= notification.notifiable_type.underscore.humanize.downcase %-->
     <br/>
     <i class="pull-right"><%= time_ago_in_words notification.created_at  %> fa</i><br/>
