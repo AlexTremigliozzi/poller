@@ -2,44 +2,58 @@
 <html>
 <head>
   <title>Poller</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" type="text/css" media="screen" href="/layout/css/custom.css">
+  <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
 </head>
 <body>
-<div class="navbar navbar-inverse">
-  <div class="container">
-    <div class="navbar-header">
-      <%= link_to 'Poller', root_path, class: 'navbar-brand' %>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><%= link_to 'Add poll', new_poll_path %></li>
-      <li><%= link_to 'Posts', posts_path %></li>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to 'Poller', root_path, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+              <%= link_to 'Add poll', new_poll_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Posts', posts_path , class: "nav-link" %>
+      </li>
       <%if user_signed_in?%>
 
-              <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
-                <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="http://pngify.me/gd/makefg.php?i=icons/Miscellaneous/bell.png&r=255&g=255&b=255" style="width:8%"> <span data-behavior="unread-count"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
-      <!--
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a> -->
-
-                </div>
-              </li>
+      <li class="nav-item btn-group dropdown" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+           <a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <i class="em em-bell"></i> <span id="notification-number" data-behavior="unread-count" ></span>
+           </a>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items" id="notification-items">
+             <!--
+             <a class="dropdown-item" href="#">Action</a>
+             <a class="dropdown-item" href="#">Another action</a>
+             <a class="dropdown-item" href="#">Something else here</a>
+             -->
+           </ul>
+       </li>
 
 
         <li style="padding-left:200px"><p style="color:white">Hello, <%=current_user.name%> - <%= link_to "Sign out", destroy_user_session_path, class: "btn btn-danger navbar-btn", style: "color:white;",:method => 'delete' %></p></li>
       <%else%>
         <li><%= link_to "Sign in", new_user_session_path, class: "btn btn-success navbar-btn", style: "color:white;"%></li>
       <%end%>
+
     </ul>
   </div>
-</div>
+</nav>
+
 
 <div class="container">
   <% flash.each do |key, value| %>
@@ -56,6 +70,3 @@
 </div>
 </body>
 </html>
-
-
-

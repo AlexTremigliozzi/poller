@@ -1,3 +1,25 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.progress {
+  background-image: linear-gradient(to bottom, #bbb 0%, #ccc 100%)
+}
+
+.navbar-unread,
+.navbar-new {
+  position: absolute;
+  top: 35%;
+  right: 12px;
+  z-index: 10;
+  width: 6px;
+  height: 6px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 0;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  background-color: #6fc8c4;
+  border-radius: 50%;
+}

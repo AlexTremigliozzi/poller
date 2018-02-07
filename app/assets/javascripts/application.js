@@ -15,5 +15,6 @@
 //= require jquery.atwho
 //= require_tree .
 //= require cocoon
+//= require notifications
 //= require comments
 //= require ahoy

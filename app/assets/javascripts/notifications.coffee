@@ -24,7 +24,8 @@ class Notifications
       dataType: "JSON"
       method: "POST"
       success: ->
-        $("[data-behavior='unread-count']").text(0)
+         $("[data-behavior='unread-count']").text("")
+         $("#notification-number").removeClass("navbar-new")
     )
 
   handleSuccess: (data) =>
@@ -36,8 +37,13 @@ class Notifications
       if notification.unread
         unread_count += 1
 
-    $("[data-behavior='unread-count']").text(items.length)
-    $("[data-behavior='notification-items']").html(items)
+    if unread_count > 0
+       $("#notification-number").addClass("navbar-new")
+       $("[data-behavior='unread-count']").text(unread_count)
+    else
+       $("#notification-number").removeClass("navbar-new")
+
+    $("#notification-items").html(items)
 
 jQuery ->
   new Notifications
