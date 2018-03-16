@@ -38,11 +38,19 @@ gem 'simple_form'
 gem 'jquery-atwho-rails'
 gem 'axlsx_rails'
 gem 'ahoy_matey'
+gem 'merit', '~> 2.4'
 
 gem 'whenever', :require => false
 
 gem "paperclip", "~> 5.0.0"
 
+
+gem 'omniauth'
+gem 'omniauth-oauth2', '1.3.1'
+gem 'omniauth-orbita', github: 'coders51/omniauth-orbita'
+gem 'oauth51-client', github: 'coders51/oauth51-client'
+
+gem 'apipie-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

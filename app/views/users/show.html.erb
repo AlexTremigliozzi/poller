@@ -1,0 +1,62 @@
+<div class="panel panel-default">
+
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <p>
+        <strong>Username</strong><br/>
+        <%= @user.name %>
+      </p>
+
+      <p>
+        <strong>Email</strong><br/>
+        <a href="mailto:<%= @user.email %>"><%= @user.email %></a>
+      </p>
+
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Post Badge</h4>
+            <% current_user.badges.each do |badge| %>
+              <%if badge.custom_fields[:label] == 'Post' %>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-4"><img src="<%=badge.custom_fields[:img]%>" style="width:30px"></div>
+                    <div class="col-sm-8">
+                      <h4><%=badge.name%></h4>
+                      <p><%=badge.description%></p>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+            <% end %>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">Comment Badge</h4>
+            <% current_user.badges.each do |badge| %>
+              <%if badge.custom_fields[:label] == 'Comment' %>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-4"><img src="<%=badge.custom_fields[:img]%>" style="width:30px"></div>
+                    <div class="col-sm-8">
+                      <h4><%=badge.name%></h4>
+                      <p><%=badge.description%></p>
+                    </div>
+                  </div>
+                </div>
+              <%end%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+</div>

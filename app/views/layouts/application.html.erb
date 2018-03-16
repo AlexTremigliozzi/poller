@@ -45,7 +45,7 @@
        </li>
 
 
-        <li><p>Hello, <%=current_user.name%> - <%= link_to "Sign out", destroy_user_session_path, class: "btn btn-danger navbar-btn", :method => 'delete' %></p></li>
+        <li><p>Hello, <a href="/users/<%=current_user.id%>"><%=current_user.name%></a> - <%= link_to "Sign out", destroy_user_session_path, class: "btn btn-danger navbar-btn", :method => 'delete' %></p></li>
       <%else%>
         <li><%= link_to "Sign in", new_user_session_path, class: "btn btn-success navbar-btn" %></li>
       <%end%>

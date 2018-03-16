@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  apipie
+  get 'users/show'
+
   resources :notifications do
     collection do
       post :mark_as_read
@@ -21,6 +24,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: "registrations"}
 
   resources :polls
+
+  resources :users
+
 
   resources :comments
   resources :votes, only: [:create]
