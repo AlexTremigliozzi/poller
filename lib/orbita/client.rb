@@ -2,28 +2,27 @@ module Orbita
   class Client
     include HTTParty
 
-    attr_reader :config
 
     def initialize
-      @config = Rails.application.secrets.oauth
     end
 
     def get_token(login, password)
-      url = [config[:app_url], 'oauth/token'].join('/')
+      url = [Rails.application.secrets.oauth['app_url'], 'oauth/token'].join('/')
       params = {
-          client_id: config[:client_id],
-          client_secret: config[:client_secret],
+          client_id: Rails.application.secrets[:client_id],
+          client_secret: Rails.application.secrets[:client_secret],
           grant_type: "password",
           username: login,
-          scope: config[:scope],
+          scope: Rails.application.secrets[:scope],
           password: password
       }
       handle_response self.class.post(url, body: params)
     end
 
     def me(token)
-      url = [config[:app_url], 'api/v1', 'users/me'].join('/')
+      url = [Rails.application.secrets.oauth['app_url'], 'api/v1', 'users/me'].join('/')
       headers = {'Authorization' => "Bearer #{token}"}
+      puts "url => #{url}"
       handle_response self.class.get(url, headers: headers)
     end
 

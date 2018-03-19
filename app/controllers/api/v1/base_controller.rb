@@ -71,7 +71,8 @@ class Api::V1::BaseController < Api::BaseController
   def authenticate_with_token!
     if request.headers['X-Auth-Token'].present?
       user_token = request.headers['X-Auth-Token']
-      user = User.find_by_o51_authentication_token(user_token.to_s)
+      info = Orbita::Client.new.me(user_token.to_s)
+      user = User.find_by_email(info[:email])
       unless user.nil?
         session[:user_id] = user.id
       else
