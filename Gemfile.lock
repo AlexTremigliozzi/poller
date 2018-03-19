@@ -35,6 +35,10 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_model_serializers (0.10.3)
+      actionpack (>= 4.1, < 6)
+      activemodel (>= 4.1, < 6)
+      jsonapi (= 0.1.1.beta2)
     activejob (4.2.3)
       activesupport (= 4.2.3)
       globalid (>= 0.3.0)
@@ -68,6 +72,8 @@ GEM
       safely_block (>= 0.1.1)
       user_agent_parser
       uuidtools
+    apipie-rails (0.5.6)
+      rails (>= 4.1)
     arel (6.0.4)
     autoprefixer-rails (7.1.6)
       execjs
@@ -131,6 +137,8 @@ GEM
     htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.15.5)
+      multi_xml (>= 0.5.2)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -144,6 +152,8 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.6)
+    jsonapi (0.1.1.beta2)
+      json (~> 1.8)
     jwt (1.5.6)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -331,13 +341,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers (~> 0.10.0)
   acts_as_commentable_with_threading
   ahoy_matey
+  apipie-rails
   axlsx_rails
   bootstrap-sass
   cocoon
   coffee-rails (~> 4.1.0)
   devise
+  httparty
   jbuilder (~> 2.0)
   jquery-atwho-rails
   jquery-rails

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  apipie
   resources :notifications do
     collection do
       post :mark_as_read
@@ -28,4 +29,20 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/user_mention' => 'home#user_mention', as: :mentionables
+
+
+  namespace :api do
+  namespace :v1 do
+    get 'system/status'
+
+    resources :posts, only: [:index]
+
+    resources :auth, only: [] do
+      collection do
+        post :orbita
+      end
+    end
+  end
+  end
+
 end

@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
   before_action :set_notifications, if: :user_signed_in?
 
 
+    def current_user
+      @current_user ||=     User.where(id: session[:user_id]).first
+    end
+    helper_method :current_user
+
+
   # def current_user
   #   @current_user ||= User.find_by(id: cookies[:user_id]) if cookies[:user_id]
   # end
