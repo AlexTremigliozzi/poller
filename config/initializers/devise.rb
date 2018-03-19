@@ -13,6 +13,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.omniauth :orbita, Rails.application.secrets.oauth['client_id'], Rails.application.secrets.oauth['client_secret'], scope: 'public accounts', client_options: {site: Rails.application.secrets.oauth['app_url']}
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

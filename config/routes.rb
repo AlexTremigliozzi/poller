@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   match '/posts/catgories/:cat' => 'posts#category_search', via: :get, as: :cat
 
-  devise_for :users, controllers: {registrations: "registrations"}
+  devise_for :users, controllers: {omniauth_callbacks: 'omniauth_callbacks'}
 
   resources :polls
 
