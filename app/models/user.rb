@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
     has_many :posts
     has_many :comments
 
+    has_many :messages
+    has_many :conversations, foreign_key: :sender_id
+
+
     has_paper_trail
 
     include Oauth51Client::User

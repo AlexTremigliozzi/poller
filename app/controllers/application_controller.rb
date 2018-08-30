@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   after_action :track_action
   before_action :set_notifications, if: :user_signed_in?
-
+  before_action :set_paper_trail_whodunnit
 
     def api_current_user
-      @current_user ||=     User.where(id: session[:user_id]).first
+      @current_user ||= User.where(id: session[:user_id]).first
     end
     helper_method :api_current_user
 

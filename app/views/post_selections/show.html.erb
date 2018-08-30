@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @post_selection.post_id %>
+</p>
+
+<p>
+  <strong>Selection:</strong>
+  <%= @post_selection.selection_id %>
+</p>
+
+<%= link_to 'Edit', edit_post_selection_path(@post_selection) %> |
+<%= link_to 'Back', post_selections_path %>

@@ -32,7 +32,27 @@
 
       <%= render partial: "comments/reply", locals: {comments: @comment.commentable.root_comments} %>
 
+
+<hr>
+
+<div>
+  <%@selections.each do |s|%>
+    <p><%=s.name%></p>
+  <%end%>
+
+</div>
+
+
+
+
+
+
+
     </div>
+
+
+
+
 
 
     <div class="col-md-4">

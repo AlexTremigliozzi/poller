@@ -8,9 +8,15 @@
     <div class="col-md-8">
       <!-- Blog Post -->
       <% @posts.each do |post| %>
+
+
       <div class="card mb-4">
         <div class="card-body">
           <h2 class="card-title"><%= post.title %></h2>
+
+
+            <%=debug(post.versions)   %>
+
           <p class="card-text"><%= post.description %></p>
           <%= link_to 'Read More', post, class: 'btn btn-success' %>
           <%= link_to 'Edit', edit_post_path(post), class: 'btn btn-primary' %>

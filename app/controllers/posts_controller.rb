@@ -20,12 +20,14 @@ class PostsController < ApplicationController
     @user_who_commented = current_user
     @comment = Comment.build_from( @post, @user_who_commented.id, "" )
     @categories = Category.all
+    @selections = Selection.where(:post_id => @post.id)
   end
 
   # GET /posts/new
   def new
     @post = Post.new
     @categories = Category.all
+    @selections = Selection.all
   end
 
   # GET /posts/1/edit
@@ -40,6 +42,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @categories = Category.all
+    @selections = Selection.all
     # @post_user = User.all
     respond_to do |format|
       CategoryPost.create(:project_id => @post.id)
@@ -102,6 +105,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :user_id, category_ids: [])
+      params.require(:post).permit(:title, :description, :user_id, :effectiveness, monitoring: [], category_ids: [])
     end
 end

@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :post_selections
+  resources :selections
   apipie
   resources :notifications do
     collection do
       post :mark_as_read
     end
   end
-
 
   resources :categories
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -29,6 +30,16 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/user_mention' => 'home#user_mention', as: :mentionables
+
+  resources :chats
+
+  resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
+
+    resources :messages, only: [:create]
+  end
 
 
   namespace :api do

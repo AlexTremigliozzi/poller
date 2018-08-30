@@ -1,0 +1,12 @@
+<%= simple_form_for(@post_selection) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :post_id %>
+    <%= f.input :selection_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

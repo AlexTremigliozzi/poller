@@ -34,12 +34,36 @@
               }
             );
         });
+
+
+        $(function() {
+          $('#post_description').froalaEditor({
+            toolbarInline: true,
+            charCounterCount: false,
+            toolbarButtons: [],
+            toolbarVisibleWithoutSelection: true,
+            quickInsertButtons: ['image', 'table', 'ol', 'ul', 'myButton'],
+            pluginsEnabled: ['image', 'link', 'url', 'video', 'file', 'quickInsert']
+          })
+        });
+
+
         </script>
 
       </div>
       <div class="form-group" style="width:100%;">
         <%= f.input :category_ids, collection: Category.all,  as: :check_boxes  %>
       </div>
+
+      <div class="form-group" style="width:100%;">
+        <%= f.input :effectiveness, as: :radio_buttons, collection: [['Ciao', 'Ciao'], ['Miao', 'Miao'], ['Bau', 'Bau']]%>
+      </div>
+
+      <div class="form-group" style="width:100%;">
+        <%= f.input :monitoring, as: :check_boxes, collection: [['Mimì', 'Mimì'], ['Cocò', 'Cocò'], ['Cacmucazz', 'Cacmucazz']]%>
+      </div>
+
+
     </form>
 
     <div class="form-group" style="display:none;">
