@@ -353,7 +353,6 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-atwho-rails
-  jquery-rails
   oauth51-client!
   omniauth-oauth2 (= 1.3.1)
   omniauth-orbita!

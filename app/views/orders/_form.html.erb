@@ -1,0 +1,23 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%#= f.input :product_id %>
+
+    <%= f.input :product_ids, collection: @products.map {|x| [x.name , x.id] }, as: :check_boxes, :label=>false,item_label_class: "checkbox col-lg-4 no-margin", item_wrapper_tag: false %>
+
+
+
+
+  </div>
+
+
+
+
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

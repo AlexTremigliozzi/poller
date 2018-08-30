@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :products
+  resources :orders
   apipie
   resources :notifications do
     collection do

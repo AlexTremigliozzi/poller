@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @order.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @order.description %>
+</p>
+
+<p>
+  <strong>Products:</strong>
+
+    <%= simple_form_for(@order, remote: true) do |f| %>
+
+        <%= f.fields_for :order_products do |op| %>
+            <br/>
+            <%= op.object.product.name %><br/>
+            <%= op.input :order_id%>
+            <%= op.input :qty %>
+            <%= op.button :submit , value:  raw("Salva"), class: "btn btn-primary saver"%>
+        <% end %>
+
+    <%end%>
+
+
+
+
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+
+
+<script>
+    $(document).ready(function($) {
+
+      $( '.saver').on('click',function(){
+        $(this).attr('value', '...');
+      });
+    });
+
+
+</script>
