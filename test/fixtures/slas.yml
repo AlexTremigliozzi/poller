@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sla1: MyString
+  sla2: MyString
+  diffnum: 1
+
+two:
+  sla1: MyString
+  sla2: MyString
+  diffnum: 1

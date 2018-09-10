@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319082255) do
+ActiveRecord::Schema.define(version: 20180910095302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(version: 20180319082255) do
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "my_orders", force: :cascade do |t|
+    t.datetime "data1"
+    t.datetime "data2"
+    t.datetime "data3"
+    t.string   "name"
+    t.text     "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.integer  "recipient_id"
     t.integer  "actor_id"
@@ -83,6 +93,22 @@ ActiveRecord::Schema.define(version: 20180319082255) do
     t.string   "notifiable_type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "qty"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "product_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "polls", force: :cascade do |t|
@@ -121,6 +147,22 @@ ActiveRecord::Schema.define(version: 20180319082255) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "order_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "slas", force: :cascade do |t|
+    t.string   "sla1"
+    t.string   "sla2"
+    t.integer  "diffnum"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

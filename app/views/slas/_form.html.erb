@@ -1,0 +1,17 @@
+<%= simple_form_for(@sla) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :sla1 ,
+      collection:[[I18n.t("data1"),'data1' ], [I18n.t("data2"),'data2'], [I18n.t("data3"),'data3']],
+      :input_html=>{class: "form-control"}%>
+    <%= f.input :sla2 ,
+    collection:[[I18n.t("data1"),'data1'], [I18n.t("data2"),'data2'], [I18n.t("data3"),'data3']],
+      :input_html=>{class: "form-control"}%>
+    <%= f.input :diffnum %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
