@@ -1,11 +1,28 @@
-<%= simple_form_for(@product) do |f| %>
+<%= simple_form_for @product, :html => { multipart: true } do |f| %>
+
+
   <%= f.error_notification %>
+
+
 
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :order_id %>
+
+    <%= file_field_tag "doc_attachs[]", type: :file, multiple: true %>
+
   </div>
+
+  <%#= f.fields_for :product_files, :html => { :multipart => true } do |pf| %>
+
+  <%#= render 'product_file_fields', f: pf %>
+
+  <%# end %>
+
+  <%#= link_to_add_association 'Allegati', f, :product_files %>
+
+
 
   <div class="form-actions">
     <%= f.button :submit %>

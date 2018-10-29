@@ -13,18 +13,16 @@
 <p>
   <strong>Products:</strong>
 
-    <%= simple_form_for(@order, remote: true) do |f| %>
+    <%= simple_form_for( @order, :url => prod_qty_order_path, :method => :put , remote: true) do |f| %>
 
         <%= f.fields_for :order_products do |op| %>
             <br/>
             <%= op.object.product.name %><br/>
-            <%= op.input :order_id%>
             <%= op.input :qty %>
             <%= op.button :submit , value:  raw("Salva"), class: "btn btn-primary saver"%>
         <% end %>
 
     <%end%>
-
 
 
 

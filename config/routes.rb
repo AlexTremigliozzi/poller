@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
 
-  resources :products
-  resources :orders
+  resources :doc_files
+
+  resources :products do
+    member do
+      put 'add_attachment' => 'products#add_attachment'
+    end
+  end
+
+  resources :orders do
+    member do
+      put 'prod_qty' => 'orders#prod_qty'
+    end
+  end
+
+
   apipie
   resources :notifications do
     collection do

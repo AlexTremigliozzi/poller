@@ -1,16 +1,26 @@
 class PollsController < ApplicationController
 
   before_action :authenticate_user!
+  # before_filter :allow_iframe_requests
+
+
+  # def allow_iframe_requests
+  #   response.headers.delete('X-Frame-Options')
+  # end
+
 
   def index
+    response.headers.delete('X-Frame-Options')
     @polls = Poll.all
   end
 
   def new
+    response.headers.delete('X-Frame-Options')
     @poll = Poll.new
   end
 
   def create
+    response.headers.delete('X-Frame-Options')
     @poll = Poll.new(poll_params)
     if @poll.save
       (User.all.uniq - [current_user]).each do |user|

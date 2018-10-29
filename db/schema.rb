@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180830131635) do
+ActiveRecord::Schema.define(version: 20180926124532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,16 @@ ActiveRecord::Schema.define(version: 20180830131635) do
   end
 
   add_index "conversations", ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true, using: :btree
+
+  create_table "doc_files", force: :cascade do |t|
+    t.string   "doc_attach_file_name"
+    t.string   "doc_attach_content_type"
+    t.integer  "doc_attach_file_size"
+    t.datetime "doc_attach_updated_at"
+    t.integer  "product_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "merit_actions", force: :cascade do |t|
     t.integer  "user_id"
@@ -210,6 +220,23 @@ ActiveRecord::Schema.define(version: 20180830131635) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "product_doc_files", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "doc_file_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "product_files", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "pfile_file_name"
+    t.string   "pfile_content_type"
+    t.integer  "pfile_file_size"
+    t.datetime "pfile_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
